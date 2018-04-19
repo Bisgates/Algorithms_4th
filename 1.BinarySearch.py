@@ -6,14 +6,14 @@ import sys
 num = int(sys.argv[1])
 
 # Read from txt file
-with open('sortedList_10k.txt') as reader:
+with open('sortedList_100k.txt') as reader:
 	lis = [int(ele.strip()) for ele in reader]
 
 def binarySearch(lis, num):
-	left, right = 0, len(lis)
+	left, right = 0, len(lis)-1
 	
 	iters = 0
-	while left < right:
+	while left <= right:
 		iters += 1
 		mid = int((left + right)/2)
 		if lis[mid] == num:
@@ -31,11 +31,11 @@ binarySearch(lis, num)
 print('\n************ TEST ***************')
 assert binarySearch(lis, max(lis)) == True
 assert binarySearch(lis, min(lis)) == True
+
 num = random.choice(lis)
-print(num)
 assert binarySearch(lis, num) == True
+
 num = random.choice(lis)
-print(num)
 assert binarySearch(lis, num) == True
 
 
